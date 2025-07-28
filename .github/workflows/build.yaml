@@ -1,4 +1,4 @@
-name: Build Windows FileID
+name: Build and Run Windows FileID
 
 on:
   push:
@@ -17,6 +17,12 @@ jobs:
 
       - name: Build with MSVC
         run: cl windows_fileid.c
+
+      - name: Create test file
+        run: echo Hello > myfile.txt
+
+      - name: Run the program
+        run: windows_fileid.exe
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
